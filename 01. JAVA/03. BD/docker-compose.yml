@@ -1,0 +1,52 @@
+services:
+  mysql:
+    build:
+      context: ./users
+      dockerfile: Dockerfile
+    container_name: eurekabank-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: eurekabank
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./users/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - eurekabank-network
+
+  postgresql:
+    build:
+      context: ./account
+      dockerfile: Dockerfile
+    container_name: eurekabank-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: accountsdb
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./account/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - eurekabank-network
+
+  mariadb:
+    build:
+      context: ./transaction
+      dockerfile: Dockerfile
+    container_name: eurekabank-mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: eurekabank
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./transaction/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - eurekabank-network
+
+networks:
+  eurekabank-network:

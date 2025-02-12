@@ -1,0 +1,54 @@
+# General ignore rules
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Java specific ignores
+**/.idea/
+**/.classpath
+**/.project
+**/.settings/
+**/target/
+**/out/
+**/*.iml
+
+# React specific ignores (Node.js)
+**/node_modules/
+**/.env
+**/.next/
+**/build/
+**/dist/
+**/.cache/
+
+# .NET specific ignores
+**/bin/
+**/obj/
+packages/
+**/packages/            # Ignore the packages folder for NuGet dependencies
+**/packages/*           # Explicitly ignore all files within packages
+**/packages/**/_._      # Ignore placeholder files in packages
+**/*.user
+**/*.suo
+**/.vs/
+**/.vscode/
+
+# Flutter/Dart specific ignores
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/build/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/engine/
+**/ios/Flutter/Generated.xcconfig
+**/pubspec.lock
+**/.idea/
+**/.metadata
+
+# Additional ignores if using macOS
+**/.DS_Store
+
+# Additional ignores if using Windows
+**/Thumbs.db
