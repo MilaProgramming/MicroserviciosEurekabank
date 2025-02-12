@@ -1,44 +1,49 @@
-/* Estilos generales */
+/* General Styles */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #d3e6ff;
+  background-color: #f4f6f9;
   color: #333;
   margin: 0;
   padding: 0;
 }
 
 .App {
-  max-width: 800px;
-  margin: 20px auto;
+  max-width: 900px;
+  margin: 30px auto;
   background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
   text-align: center;
-  font-size: 2.5rem;
-  color: #333;
+  font-size: 2.8rem;
+  color: #1e2a47;
+  margin-bottom: 20px;
 }
 
 p {
   text-align: center;
   color: #ff6347;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
-/* Estilos para los botones de las pestañas */
+/* Button Styles */
 button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 1.1rem;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  margin: 1rem;
+  margin: 10px;
   transition: background-color 0.3s, transform 0.3s;
+  width: 200px;
 }
 
 button:hover {
@@ -54,9 +59,9 @@ button:focus {
   outline: none;
 }
 
-/* Estilos para el formulario de cuenta */
+/* Input Styles */
 div {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 label {
@@ -65,10 +70,11 @@ label {
 }
 
 input {
-  padding: 10px;
+  padding: 12px;
   width: 100%;
+  max-width: 350px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   margin: 10px 0;
   font-size: 1rem;
   box-sizing: border-box;
@@ -79,50 +85,174 @@ input:focus {
   border-color: #007bff;
 }
 
-/* Estilo para la lista de movimientos */
+/* Styling for the List of Movements */
 ul {
   list-style-type: none;
   padding: 0;
+  width: 100%;
+  max-width: 600px;
 }
 
 li {
-  padding: 10px;
+  padding: 15px;
   border-bottom: 1px solid #ddd;
   font-size: 1rem;
   color: #333;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+li:hover {
+  background-color: #f1f1f1;
 }
 
 li:last-child {
   border-bottom: none;
 }
 
-/* Estilos para el contenedor de las pestañas */
+/* Tab Container Styles */
 div.pestanas-container {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 100%;
 }
 
 div.pestanas-container button {
-  width: 48%;
+  width: auto;
+  padding: 12px 24px;
+  font-size: 1rem;
 }
 
-/* Contenedor de contenido */
+.App img {
+  width: 200px;
+  margin: 20px 0;
+  border-radius: 50%;
+}
+
+/* Content Container */
 div.pestana-content {
   padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
-.App {
+h2 {
+  font-size: 1.6rem;
+  color: #007bff;
+  margin-top: 20px;
+}
+
+h2.balance {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #28a745;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* Form Styling */
+form {
   display: flex;
   flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.App img{
-  justify-self: center;
-  align-self: center;
+form label {
+  font-size: 1rem;
+  color: #333;
 }
 
+form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  transition: border-color 0.3s;
+}
 
+form input:focus {
+  border-color: #007bff;
+}
+
+form button {
+  padding: 12px;
+  font-size: 1.1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* Hide the login form when register form is shown */
+form.hidden {
+  display: none;
+}
+
+/* Button to toggle between login and register */
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Select Styles */
+select {
+  padding: 12px;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+select:focus {
+  border-color: #007bff;
+}
+
+select option {
+  font-size: 1rem;
+  padding: 10px;
+}

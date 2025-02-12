@@ -12,8 +12,11 @@ import TransferenciaForm from './components/TransferenciaForm';
 function App() {
   const [cuenta, setCuenta] = useState('');
   const [balance, setBalance] = useState(null); // State to hold the balance
-  const [mostrarMovimientos, setMostrarMovimientos] = useState(false); 
+  const [mostrarMovimientos, setMostrarMovimientos] = useState(false);
   const [activaPestana, setActivaPestana] = useState('movimientos');
+  const [userDetails, setUserDetails] = useState(null); // Store user details (name, account number)
+  const [loading, setLoading] = useState(true); // Initialize loading state as true
+
   const {
     movimientos,
     leerMovimientos,
@@ -22,10 +25,7 @@ function App() {
     realizarRetiro
   } = useEurekaController();
 
-  const {
-    loading,
-    login
-  } = useUserController();
+  const { login } = useUserController();
 
   // Function to handle the change in the account input
   const handleCuentaChange = (e) => {
@@ -66,13 +66,31 @@ function App() {
     }
   };
 
+  const handleLoginSuccess = (user) => {
+    setUserDetails({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      accountNumber: user.account.accountNumber,
+    });
+    setLoading(false); // Set loading to false after successful login
+    setActivaPestana('movimientos');  // You can default to "movimientos" tab after login
+  };
+
   return (
     <div className="App">
       <h1>EurekaBank</h1>
-      <img src={monstruo} style={{width: "200px"}} alt="Monstruo" />
+      <img src={monstruo} style={{ width: '200px' }} alt="Monstruo" />
 
-      {!loading ? (
-        <LoginForm login={login} />
+      {/* Show user details if logged in */}
+      {userDetails ? (
+        <div style={{ marginBottom: '20px', textAlign: 'center' }}>
+          <h3>Bienvenido, {userDetails.firstName} {userDetails.lastName}!</h3>
+          <p>Número de Cuenta: {userDetails.accountNumber}</p>
+        </div>
+      ) : null}
+
+      {!userDetails ? (
+        <LoginForm login={login} onLoginSuccess={handleLoginSuccess} />
       ) : (
         <>
           {/* Tab buttons */}
