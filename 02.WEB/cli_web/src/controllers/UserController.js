@@ -72,14 +72,15 @@ const useUserController = () => {
   };
 
   const login = async (username, password) => {
-    setLoading(true);
     try {
-      return await UserService.login(username, password);
+      await UserService.login(username, password);
+      setLoading(true);
+      return;
     } catch (err) {
       setError(err.message);
+      setLoading(false);
       return false;
     } finally {
-      setLoading(false);
     }
   };
 

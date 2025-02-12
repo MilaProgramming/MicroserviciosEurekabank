@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useEurekaController } from './controllers/EurekaController';
+import useUserController from './controllers/UserController';
 import MovimientosList from './components/MovimientosList';
 import DepositoForm from './components/DepositoForm';
 import LoginForm from './components/LoginForm';
@@ -14,13 +15,24 @@ function App() {
   const [activaPestana, setActivaPestana] = useState('movimientos'); // Estado para controlar la pestaña activa
   const {
     movimientos,
-    isLoggedIn,
-    login,
     leerMovimientos,
     realizarDeposito,
     realizarTransferencia,
     realizarRetiro
   } = useEurekaController();
+
+  const {
+    usuarios,
+    usuario,
+    error,
+    loading,
+    cargarUsuarios,
+    registrarUsuario,
+    encontrarUsuario,
+    actualizarUsuario,
+    eliminarUsuario,
+    login
+  } = useUserController();
 
   // Función para manejar el cambio en el input de cuenta
   const handleCuentaChange = (e) => {
@@ -48,7 +60,7 @@ function App() {
       <h1>EurekaBank</h1>
       <img src={monstruo} style={{width: "200px"}} alt="Monstruo" />
 
-      {!isLoggedIn ? (
+      {!loading ? (
         <LoginForm login={login} />
       ) : (
         <>

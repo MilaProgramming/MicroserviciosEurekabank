@@ -12,7 +12,7 @@ const performRestRequest = async (endpoint, method = "GET", body = null) => {
   };
 
   try {
-    const response = await fetch(`${BASE_URL}/${endpoint}`, options);
+    const response = await fetch(`${BASE_URL}${endpoint}`, options);
     const data = await response.json();
     if (!response.ok) {
       throw new Error(data.message || `Error ${response.status}: ${response.statusText}`);
@@ -25,10 +25,10 @@ const performRestRequest = async (endpoint, method = "GET", body = null) => {
 };
 
 export const UserService = {
-  registrarUsuario: (userData) => performRestRequest("registrar", "POST", userData),
+  registrarUsuario: (userData) => performRestRequest("/registrar", "POST", userData),
   obtenerUsuarios: () => performRestRequest(""),
-  encontrarUsuario: (id) => performRestRequest("encontrar", "PUT", { id }),
-  actualizarUsuario: (id, userData) => performRestRequest(id, "PUT", userData),
-  eliminarUsuario: (id) => performRestRequest(id, "DELETE"),
-  login: (username, password) => performRestRequest("login", "POST", { username, password }),
+  encontrarUsuario: (id) => performRestRequest("/encontrar", "PUT", { id }),
+  actualizarUsuario: (id, userData) => performRestRequest("/"+id, "PUT", userData),
+  eliminarUsuario: (id) => performRestRequest("/"+id, "DELETE"),
+  login: (username, password) => performRestRequest("/login", "POST", { username, password }),
 };
