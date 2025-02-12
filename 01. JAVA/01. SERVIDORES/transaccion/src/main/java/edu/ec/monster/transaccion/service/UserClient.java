@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.*;
 public interface UserClient {
 
     @PutMapping("/encontrar")
-    public ResponseEntity<?> findUserById(@RequestBody User user);
+    ResponseEntity<?> findUserById(@RequestBody User user);
 
 }

@@ -1,9 +1,6 @@
 package edu.ec.monster.transaccion.service;
 
-import edu.ec.monster.transaccion.model.AddBalanceDTO;
-import edu.ec.monster.transaccion.model.Transaction;
-import edu.ec.monster.transaccion.model.TransactionRepository;
-import edu.ec.monster.transaccion.model.User;
+import edu.ec.monster.transaccion.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -24,7 +21,9 @@ public class TransactionService {
 
     // Create a withdrawal or deposit (movement)
     // Update the createMovement method to wrap the BigDecimal in an AddBalanceDTO
-    public Transaction createMovement(Long accountId, BigDecimal amount, String transactionType) {
+    public Transaction createMovement(String accountNumber, BigDecimal amount, String transactionType) {
+
+        Long accountId = accountClient.getAccountByAccountNumber(accountNumber).getId();
         log.info("Attempting to create movement: accountId={}, amount={}, transactionType={}", accountId, amount, transactionType);
 
         // Create AddBalanceDTO to wrap the amount
@@ -58,7 +57,10 @@ public class TransactionService {
         }
     }
     // Create a transfer (from one account to another)
-    public Transaction createTransfer(Long sourceAccountId, Long destinationAccountId, BigDecimal amount) {
+    public Transaction createTransfer(String sourceAccountNumber, String destinationAccountNumber, BigDecimal amount) {
+
+        Long sourceAccountId = accountClient.getAccountByAccountNumber(sourceAccountNumber).getId();
+        Long destinationAccountId = accountClient.getAccountByAccountNumber(destinationAccountNumber).getId();
         log.info("Attempting to create transfer: sourceAccountId={}, destinationAccountId={}, amount={}", sourceAccountId, destinationAccountId, amount);
 
         // First, check if the user exists (by calling UserService)
@@ -126,5 +128,30 @@ public class TransactionService {
         log.info("Fetching all transactions");
         return transactionRepository.findAll();
     }
+
+    public List<Transaction> getTransactionsByAccountNumber(String accountNumber) {
+        log.info("Fetching transactions for accountNumber={}", accountNumber);
+
+        try {
+            // Retrieve account details using account number
+            Account account = accountClient.getAccountByAccountNumber(accountNumber);
+
+            if (account == null) {
+                log.error("No account found for accountNumber={}", accountNumber);
+                throw new RuntimeException("Account not found");
+            }
+
+            Long accountId = account.getId();
+            log.info("Found accountId={} for accountNumber={}. Fetching transactions...", accountId, accountNumber);
+
+            // Retrieve transactions using the found accountId
+            return transactionRepository.findByUserId(accountId);
+        } catch (Exception e) {
+            log.error("Error fetching transactions for accountNumber={}: {}", accountNumber, e.getMessage());
+            throw new RuntimeException("Error retrieving transactions", e);
+        }
+    }
+
+
 
 }

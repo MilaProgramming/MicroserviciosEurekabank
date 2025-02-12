@@ -95,6 +95,10 @@ public class AccountService {
         }
     }
 
+    public Optional<Account> findByAccountNumber(String accountNumber) {
+        log.info("Searching for account with accountNumber={}", accountNumber);
+        return accountRepository.findByAccountNumber(accountNumber);
+    }
 
 }
 

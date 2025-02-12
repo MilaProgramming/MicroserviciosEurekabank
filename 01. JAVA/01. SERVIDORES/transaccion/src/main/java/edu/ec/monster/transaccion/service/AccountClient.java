@@ -21,4 +21,8 @@ public interface AccountClient {
 
     @DeleteMapping("/{accountId}")
     void deleteAccount(@PathVariable("accountId") Long accountId);
+
+    // New method to fetch account by accountNumber
+    @GetMapping("/nocuenta/{accountNumber}")
+    Account getAccountByAccountNumber(@PathVariable("accountNumber") String accountNumber);
 }

@@ -81,4 +81,11 @@ public class AccountController {
         }
     }
 
+    @GetMapping("/nocuenta/{accountNumber}")
+    public ResponseEntity<Account> getAccountByAccountNumber(@PathVariable String accountNumber) {
+        return accountService.findByAccountNumber(accountNumber)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }

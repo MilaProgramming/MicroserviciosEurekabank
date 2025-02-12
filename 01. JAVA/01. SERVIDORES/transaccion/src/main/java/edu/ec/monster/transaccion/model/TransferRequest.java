@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class TransferRequest {
-    private Long sourceAccountId;
-    private Long destinationAccountId;
+    private String sourceAccountNumber;
+    private String destinationAccountNumber;
     private BigDecimal amount;
 }

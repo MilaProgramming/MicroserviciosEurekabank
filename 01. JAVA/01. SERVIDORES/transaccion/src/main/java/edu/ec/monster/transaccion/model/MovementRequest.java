@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class MovementRequest {
-    private Long accountId;
+    private String accountNumber;
     private BigDecimal amount;
     private String transactionType;
 }

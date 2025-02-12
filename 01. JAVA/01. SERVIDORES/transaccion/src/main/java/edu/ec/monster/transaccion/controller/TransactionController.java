@@ -23,7 +23,7 @@ public class TransactionController {
 
     @PostMapping("/movimiento")
     public ResponseEntity<Transaction> createMovement(@RequestBody MovementRequest request) {
-        Transaction transaction = transactionService.createMovement(request.getAccountId(), request.getAmount(), request.getTransactionType());
+        Transaction transaction = transactionService.createMovement(request.getAccountNumber(), request.getAmount(), request.getTransactionType());
         return ResponseEntity.ok(transaction);
     }
 
@@ -33,7 +33,7 @@ public class TransactionController {
             log.error("Received null request body");
             throw new IllegalArgumentException("TransferRequest cannot be null");
         }
-        Transaction transaction = transactionService.createTransfer(request.getSourceAccountId(), request.getDestinationAccountId(), request.getAmount());
+        Transaction transaction = transactionService.createTransfer(request.getSourceAccountNumber(), request.getDestinationAccountNumber(), request.getAmount());
         return ResponseEntity.ok(transaction);
     }
     
@@ -47,4 +47,15 @@ public class TransactionController {
         return ResponseEntity.ok(transactions);
     }
 
+
+    @GetMapping("/{accountNumber}")
+    public ResponseEntity<List<Transaction>> getTransactionsByAccountNumber(@PathVariable String accountNumber) {
+        List<Transaction> transactions = transactionService.getTransactionsByAccountNumber(accountNumber);
+
+        if (transactions.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(transactions);
+    }
 }
