@@ -8,10 +8,9 @@ body {
 }
 
 .App {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 30px auto;
   background-color: #ffffff;
-  padding: 40px;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -24,6 +23,7 @@ h1 {
   font-size: 2.8rem;
   color: #1e2a47;
   margin-bottom: 20px;
+  margin: 20px 0 0 0;
 }
 
 p {
@@ -39,16 +39,18 @@ button {
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
-  margin: 10px;
   transition: background-color 0.3s, transform 0.3s;
-  width: 200px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button:hover {
   background-color: #0056b3;
-  transform: translateY(-2px);
+
 }
 
 button.active {
@@ -220,13 +222,10 @@ form.hidden {
 
 /* Button to toggle between login and register */
 button {
-  margin-top: 15px;
-  padding: 10px 20px;
   font-size: 1.1rem;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -255,4 +254,71 @@ select:focus {
 select option {
   font-size: 1rem;
   padding: 10px;
+}
+
+.botones button{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-right: 1px solid #ddd;
+  margin: 0;
+  background-color: white;
+  color: rgb(37, 78, 105);
+}
+
+.botones button:hover{
+  background-color: #386980;
+  color: white;
+}
+
+.botones button:focus{
+  background-color: #529cbe;
+  color: white;
+}
+
+.botones button.active{
+  background-color: #529cbe;
+  color: white;
+}
+
+.Header{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.Logos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+}
+
+.tabInfo{
+  display: grid;
+  grid-template-columns: 30% 70%;
+  margin: 0;
+  width: 100%;
+  border-top: 5px solid #245e80;
+  padding-top:20px;
+}
+
+.tabContent{
+  width: 60%;
+  margin: auto;
+}
+
+#map img{
+  border-radius: 0;
+  margin: 0;
+}
+
+#map div{
+
+  border-radius: 0;
+  margin: 0;  
 }

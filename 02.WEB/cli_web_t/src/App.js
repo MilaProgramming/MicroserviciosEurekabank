@@ -8,6 +8,7 @@ import './App.css';
 import monstruo from './assets/monster.jpg';
 import RetiroForm from './components/RetiroForm';
 import TransferenciaForm from './components/TransferenciaForm';
+import AboutUs from './components/AboutUs';
 
 function App() {
   const [cuenta, setCuenta] = useState('');
@@ -78,23 +79,26 @@ function App() {
 
   return (
     <div className="App">
-      <h1>EurekaBank</h1>
-      <img src={monstruo} style={{ width: '200px' }} alt="Monstruo" />
-
-      {/* Show user details if logged in */}
-      {userDetails ? (
-        <div style={{ marginBottom: '20px', textAlign: 'center' }}>
-          <h3>Bienvenido, {userDetails.firstName} {userDetails.lastName}!</h3>
-          <p>Número de Cuenta: {userDetails.accountNumber}</p>
+      <div className='Header'>
+        <div className='Logos'>
+          <h1>EurekaBank</h1>
+          <img src={monstruo} style={{ width: '200px' }} alt="Monstruo" />
         </div>
-      ) : null}
+        {/* Show user details if logged in */}
+        {userDetails ? (
+          <div style={{ marginBottom: '20px', textAlign: 'center' }}>
+            <h3>Bienvenido, {userDetails.firstName} {userDetails.lastName}!</h3>
+            <p>Número de Cuenta: {userDetails.accountNumber}</p>
+          </div>
+        ) : null}
+      </div>
 
       {!userDetails ? (
         <LoginForm login={login} onLoginSuccess={handleLoginSuccess} />
       ) : (
-        <>
+        <div className='tabInfo'>
           {/* Tab buttons */}
-          <div>
+          <div className='botones'>
             <button onClick={() => cambiarPestana('movimientos')} className={activaPestana === 'movimientos' ? 'active' : ''}>
               Ver Movimientos
             </button>
@@ -110,8 +114,12 @@ function App() {
             <button onClick={handleVerBalance}>
               Ver Balance
             </button>
+            <button onClick={() => cambiarPestana('aboutus')} className={activaPestana === 'aboutus' ? 'active' : ''}>
+              ¿Quienes somos?
+            </button>
           </div>
 
+          <div className='tabContent'>
           {/* Content of active tab */}
           {activaPestana === 'movimientos' && (
             <div>
@@ -147,6 +155,11 @@ function App() {
               <TransferenciaForm realizarTransferencia={realizarTransferencia} />
             </div>
           )}
+          {activaPestana === 'aboutus' && (
+            <div>
+              <AboutUs />
+            </div>
+          )}
 
           {/* Display balance */}
           {balance !== null && (
@@ -154,7 +167,8 @@ function App() {
               <h2>Balance de la Cuenta: ${balance}</h2>
             </div>
           )}
-        </>
+          </div>
+        </div>
       )}
     </div>
   );
