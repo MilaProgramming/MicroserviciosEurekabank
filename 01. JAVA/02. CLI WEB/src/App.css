@@ -1,0 +1,268 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  max-width: 900px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #1e2a47;
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: center;
+  color: #ff6347;
+  font-size: 1.2rem;
+}
+
+/* Button Styles */
+button {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 200px;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button.active {
+  background-color: #0056b3;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Input Styles */
+div {
+  margin-bottom: 25px;
+}
+
+label {
+  font-size: 1rem;
+  color: #333;
+}
+
+input {
+  padding: 12px;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+}
+
+/* Styling for the List of Movements */
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+li {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  color: #333;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+li:hover {
+  background-color: #f1f1f1;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+/* Tab Container Styles */
+div.pestanas-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+div.pestanas-container button {
+  width: auto;
+  padding: 12px 24px;
+  font-size: 1rem;
+}
+
+.App img {
+  width: 200px;
+  margin: 20px 0;
+  border-radius: 50%;
+}
+
+/* Content Container */
+div.pestana-content {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: #007bff;
+  margin-top: 20px;
+}
+
+h2.balance {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #28a745;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+form label {
+  font-size: 1rem;
+  color: #333;
+}
+
+form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+
+form input:focus {
+  border-color: #007bff;
+}
+
+form button {
+  padding: 12px;
+  font-size: 1.1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* Hide the login form when register form is shown */
+form.hidden {
+  display: none;
+}
+
+/* Button to toggle between login and register */
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Select Styles */
+select {
+  padding: 12px;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+select:focus {
+  border-color: #007bff;
+}
+
+select option {
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.weather-card {
+  background: #4a90e2;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  width: 200px;
+  margin-top: 10px;
+}
